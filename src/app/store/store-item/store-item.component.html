@@ -1,9 +1,10 @@
-<div class="store--item">
-    <div class="store--item-icon"
-    *ngFor="let item of items | async">
-      <img src="../../../assets/icons/{{item.id}}.svg">
+<div class="store--item" *ngFor="let item of items | async">
+    <div class="store--item-icon">
+      <img src="{{item.image}}">
       <h2>{{ item.name }}</h2>
-      <button>Add</button>
     </div>
+    <ng-template [ngIf]="item">
+        <button (click)="addItemToCart(item)">Add</button>
+    </ng-template>
   </div>
   

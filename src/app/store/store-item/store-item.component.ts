@@ -1,4 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { ItemService } from 'src/app/item.service';
 import { Item } from 'src/app/models/item';
 // import { StoreService } from 'src/app/store.service';
@@ -9,21 +9,27 @@ import { Item } from 'src/app/models/item';
   styleUrls: ['./store-item.component.css']
 })
 
-export class StoreItemComponent {
-  // storeService = inject(StoreService)
+export class StoreItemComponent{
+  // ngOnInit(): void {
+  //   throw new Error('Method not implemented.');
+  // }
+  @Input() item: Item | null = null;
+
   itemService = inject(ItemService)
+  
   // console.log('Items in ItemService:', this.itemService.items);
 
 
   items = this.itemService.items
 
-  // constructor() {
-  //   console.log('Item in StoreItemComponent:', this.item);
-  // }
+
 
   // addItemToCart() {
   //   if (this.item !== null) {
-  //     this.storeService.addItemToCart(this.item);
+  //     this.itemService.addItemToCart(this.item);
   //   }
   // }
+  addItemToCart(item: Item): void {
+    this.itemService.addItemToCart(item);
+  }
 }

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Item } from './models/item';
+import { ItemService } from './item.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-green-grocers';
+  cartItems: Item[] = [];
+
+  constructor(private itemService: ItemService) {}
+
+  ngOnInit(): void {
+    // Initialize cartItems as empty array
+    this.cartItems = [];
+  }
+
+  // Method to add items to cart
+  addItemToCart(item: Item) {
+    this.cartItems.push(item);
+  }
 }

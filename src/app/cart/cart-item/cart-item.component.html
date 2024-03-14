@@ -1,7 +1,40 @@
-<!-- <div class="store--item">
-    <div class="store--item-icon">
-      <img src="assets/icons/{{ item?.id }}.svg" alt="{{ item?.name }}">
+<div *ngIf="items.length > 0; else emptyCart">
+    <div class="cart--item-list-container"
+    *ngFor="let item of items">
+        <ul class="item-list cart--item-list">
+          <li>
+            <img
+              class="cart--item-icon"
+              src="{{item.image}}"
+              alt="beetroot"
+            />
+            <p>{{item.name}}</p>
+            <button class="quantity-btn remove-btn center">-</button>
+            <span class="quantity-text center">{{item.quantity}}</span>
+            <button class="quantity-btn add-btn center">+</button>
+          </li>
+        </ul>
+      </div>
+  </div>
+  <ng-template #emptyCart>
+    <p>Your cart is empty.</p>
+  </ng-template>
+  
+
+<!-- <div *ngIf="items.length > 0; else emptyCart">
+    <div *ngFor="let item of items">
+      <div class="store--item">
+        <div class="store--item-icon">
+          <img [src]="item.image" [alt]="item.name">
+        </div>
+        <h2>{{ item.name }}</h2>
+        <p>Price: {{ item.price }}</p>
+        <p>Quantity: {{ item.quantity }}</p>
+      </div>
     </div>
-    <h2>{{ item?.name }}</h2>
-  </div> -->
-  <h2>hei</h2>
+  </div>
+  
+  <ng-template #emptyCart>
+    <p>Your cart is empty.</p>
+  </ng-template> -->
+  
